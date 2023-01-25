@@ -1,0 +1,60 @@
+{
+    "type": "record",
+    "name": "Transaction",
+    "namespace": "kafkaconnectjdbc.record",
+    "fields": [
+        {
+            "name": "txn_id",
+            "type": "int"
+        },
+        {
+            "name": "customer_id",
+            "type": [
+                "null",
+                "int"
+            ],
+            "default": null
+        },
+        {
+            "name": "amount",
+            "type": [
+                "null",
+                {
+                    "type": "bytes",
+                    "scale": 2,
+                    "precision": 5,
+                    "connect.version": 1,
+                    "connect.parameters": {
+                        "scale": "2",
+                        "connect.decimal.precision": "5"
+                    },
+                    "connect.name": "org.apache.kafka.connect.data.Decimal",
+                    "logicalType": "decimal"
+                }
+            ],
+            "default": null
+        },
+        {
+            "name": "currency",
+            "type": [
+                "null",
+                "string"
+            ],
+            "default": null
+        },
+        {
+            "name": "txn_timestamp",
+            "type": [
+                "null",
+                {
+                    "type": "long",
+                    "connect.version": 1,
+                    "connect.name": "org.apache.kafka.connect.data.Timestamp",
+                    "logicalType": "timestamp-millis"
+                }
+            ],
+            "default": null
+        }
+    ],
+    "connect.name": "kafkaconnectjdbc.record.Transaction"
+}
