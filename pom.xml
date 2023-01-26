@@ -13,7 +13,7 @@
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <kafka.version>3.3.0</kafka.version>
-        <confluentinc.components.version>7.3.1</confluentinc.components.version>
+        <io.confluent.schema-registry.version>7.3.1</io.confluent.schema-registry.version>
         <avro.maven.plugin.version>1.11.1</avro.maven.plugin.version>
     </properties>
 
@@ -33,7 +33,7 @@
         <dependency>
             <groupId>io.confluent</groupId>
             <artifactId>kafka-avro-serializer</artifactId>
-            <version>${confluentinc.components.version}</version>
+            <version>${io.confluent.schema-registry.version}</version>
         </dependency>
     </dependencies>
 
@@ -45,14 +45,9 @@
                 <version>${avro.maven.plugin.version}</version>
                 <executions>
                     <execution>
-                        <phase>generate-sources</phase>
                         <goals>
                             <goal>schema</goal>
                         </goals>
-                        <configuration>
-                            <sourceDirectory>${project.basedir}/src/main/avro/</sourceDirectory>
-                            <outputDirectory>${project.build.directory}/generated-sources/avro/</outputDirectory>
-                        </configuration>
                     </execution>
                 </executions>
                 <configuration>
